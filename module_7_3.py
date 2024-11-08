@@ -8,11 +8,14 @@ class WordsFinder:
         self.file_names = args
 
     def get_all_words(self):
-        all_worlds = {}
+        all_worlds = dict()
         for one_file_name in self.file_names:
             open_file = open(one_file_name, 'r', encoding='utf-8')
+            key = one_file_name
             for world in open_file:
-                all_worlds[one_file_name] = world.lower()
+                value = world.split()
+                all_worlds[key] = value
+                print(value)
             open_file.close()
         return all_worlds
 
