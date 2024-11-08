@@ -1,5 +1,4 @@
-from encodings.utf_7 import encode
-from fileinput import close
+
 from pprint import pprint
 
 
