@@ -1,7 +1,11 @@
 
 from pprint import pprint
-from time import process_time
 
+def check(search_product, shop_product):
+    for i in shop_product:
+        if str(search_product) == str(i):
+            return 1
+    return 0
 
 class Product:
     def __init__(self, name, weight, category):
@@ -14,25 +18,23 @@ class Product:
 
 
 class Shop:
-    def __init__(self):
-        self.__file_name = 'products.txt'
+    __file_name = 'products.txt'
 
     def get_products(self, *args):
         file = open(self.__file_name, 'r')
-        # for i in enumerate(file):
-        return  f"{file.read()}"
+        return file.read()
 
-        file.close()
     def add(self, *products):
-        file = open(self.__file_name, 'a')
 
-        for i in range(len(products)):
-            if products.__getitem__(i) == self.get_products():
-                print(1)
+        products_in_shop = self.get_products().split('\n')
+
+
+        file = open(self.__file_name, 'a')
+        for i in products:
+            if check(i, products_in_shop) == 1:
+                print(f'Продукт {i} уже есть в магазине')
             else:
-                print(products.__getitem__(i))
-        #   pprint(file.write(f"{products.__getitem__(i)}"))
-        #   pprint(file.write('\n'))
+                file.write(str(i) + '\n')
         file.close()
 
 
